@@ -213,8 +213,11 @@ for msi_identity in msi_accounts_to_assign:
         resource_group.id,
         uuid.uuid4(), # Role assignment random name
         {
-            'role_definition_id': contributor_role.id,
-            'principal_id': msi_identity
+            'properties':
+                {
+                    'role_definition_id': contributor_role.id,
+                    'principal_id': msi_identity
+                }
         }
     )
 ```
